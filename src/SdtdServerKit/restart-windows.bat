@@ -1,5 +1,4 @@
-@echo off
-chcp 65001
+@echo on
 setlocal enabledelayedexpansion
 
 echo Attempting to restart the server...
@@ -9,16 +8,16 @@ if %errorlevel% equ 0 (
     if !errorlevel! equ 0 (
         echo Process %~1 terminated
     ) else (
-        echo Err：Process termination failed（Insufficient permissions?）
+        echo Err: Process termination failed (Insufficient permissions?)
     )
     timeout /t 2 /nobreak >nul
 )
 
 start "" /D "%~dp2" "%~nx2" >nul
 if %errorlevel% neq 0 (
-    echo Err：Failed to start server [%~2]
+    echo Err: Failed to start server [%~2]
     exit /b 1
 )
 
-echo Server restart operation completed！
+echo Server restart operation completed!
 :exit
